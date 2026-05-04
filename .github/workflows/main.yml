@@ -1,4 +1,4 @@
-name: Java CI with Maven (Bai 8)
+name: Java CI with Maven (Full Project)
 
 on:
   push:
@@ -8,10 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # Thuê máy ảo Ubuntu của GitHub
+    runs-on: ubuntu-latest # Thuê máy ảo Ubuntu sạch của GitHub
 
     steps:
-    - uses: actions/checkout@v4 # Lấy code từ repo của mày bỏ vào máy ảo
+    - uses: actions/checkout@v4 # Lấy toàn bộ code từ Repo của mày bỏ vào máy ảo
 
     - name: Set up JDK 17
       uses: actions/setup-java@v4
@@ -20,12 +20,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Build and Package with Maven
-      # Máy ảo sẽ tự chạy lệnh đóng gói file JAR
-      run: mvn -pl bai9.8 clean package
+    - name: Build and Test All Modules
+      # Lệnh này sẽ quét file pom.xml ở gốc và thực thi tất cả các folder con
+      run: mvn clean package -DskipTests=false
 
-    - name: Run JAR file
-      # Chạy thử file đã đóng gói để kiểm tra kết quả
-      run: mvn clean package
-      
- 
+    - name: Run Bai 9.8 Execution (Optional)
+      # Đây là bước chạy thử file JAR của bài 9.8 để hiện kết quả thực thi
+      run: java -jar bai9.8/target/bai9.8-1.0-SNAPSHOT.jar || echo "Bai 9.8 chưa có file JAR hoặc lỗi thực thi"
