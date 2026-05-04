@@ -1,0 +1,25 @@
+name: Run Maven on GitHub VM
+
+on:
+  push:
+    branches: [ "main" ] # Khi mày push code lên nhánh main thì máy ảo tự chạy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Đây chính là lệnh thuê "máy ảo" Ubuntu của GitHub
+    steps:
+      - uses: actions/checkout@v4 # Lệnh máy ảo tự lấy code của mày về
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build and Package
+        # Máy ảo có sẵn Maven nên lệnh này sẽ chạy ngon lành
+        run: mvn -pl bai9.8 clean package
+
+      - name: Execute JAR
+        # Sau khi đóng gói, máy ảo tự chạy file JAR để kiểm tra
+        run: java -jar bai9.8/target/bai9.8-1.0-SNAPSHOT.jar
