@@ -27,3 +27,4 @@ jobs:
     - name: Run Bai 9.8 Execution (Optional)
       # Đây là bước chạy thử file JAR của bài 9.8 để hiện kết quả thực thi
       run: java -jar bai9.8/target/bai9.8-1.0-SNAPSHOT.jar || echo "Bai 9.8 chưa có file JAR hoặc lỗi thực thi"
+ 
