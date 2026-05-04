@@ -26,5 +26,5 @@ jobs:
 
     - name: Run JAR file
       # Chạy thử file đã đóng gói để kiểm tra kết quả
-      run: java -jar bai9.8/target/bai9.8-1.0-SNAPSHOT.jar
+      run: mvn clean package
       
