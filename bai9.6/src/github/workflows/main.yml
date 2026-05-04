@@ -1,0 +1,23 @@
+name: CI/CD Pipeline Optimization
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 with Caching
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          # Cấu hình Caching ở đây để tối ưu tốc độ
+          cache: 'maven'
+
+      - name: Build and Test with Maven
+        run: |
+          cd bai9.6
+          mvn clean verify

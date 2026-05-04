@@ -1,0 +1,32 @@
+name: Automated Code Review
+
+on:
+  pull_request:
+    branches: [ main ] # Chỉ chạy khi có PR hướng vào nhánh main
+
+jobs:
+  checkstyle:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write # Quan trọng: Để Bot có quyền viết comment vào PR
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      # Chạy Checkstyle và tự động comment vào dòng code lỗi
+      - name: Checkstyle Review
+        uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: warning
+          # Đường dẫn tới file config checkstyle (thường dùng google_checks.xml có sẵn)
+          checkstyle_config: google_checks.xml
+          workdir: bai9.7

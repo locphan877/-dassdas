@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="BankSystem" />
+        <module name="jacoco-maven-plugin" />
+        <module name="bai9.3" />
+        <module name="MathUtils (1) (vn.edu.vnu.uet)" />
+        <module name="bank-system" />
+        <module name="BankSystem (1) (com.uet)" />
+        <module name="MathUtils" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

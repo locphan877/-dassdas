@@ -1,0 +1,14 @@
+<configuration>
+    <!-- Console Appender: Ghi log ra màn hình -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Cấp độ log (Logging Levels) -->
+    <!-- Chọn INFO để theo dõi luồng hoạt động chính của ngân hàng mà không bị quá nhiều dữ liệu rác -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

@@ -1,0 +1,19 @@
+name: Check Multi-OS
+on: [push] # Mỗi lần bạn push code lên là nó tự chạy test
+
+jobs:
+  test-multi-os:
+    strategy:
+      matrix:
+        # Chạy 3 máy ảo cùng lúc để kiểm tra đường dẫn file
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Run Test
+        run: mvn test

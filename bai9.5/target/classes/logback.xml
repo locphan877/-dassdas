@@ -1,0 +1,14 @@
+<configuration>
+    <!-- Appender in ra màn hình Console -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Định dạng: Thời gian [Mức độ] Tên Class - Thông điệp -->
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Chỉ in các log từ mức INFO trở lên để đỡ rác máy -->
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
